@@ -22,7 +22,7 @@ brew services stop postgresql
 ### Tap this :)
 
 ```sh
-brew tap radubogdan/homebrew-postgres965
+brew tap radubogdan/homebrew-postgres
 ```
 
 Install latest version of postgres and unlink
@@ -39,7 +39,7 @@ rm -rf /usr/local/var/postgres
 ```
 
 ```sh
-brew install radubogdan/postgres965
+brew install radubogdan/postgres/postgresql
 brew switch postgresql 9.6.5
 brew install postgis
 ```
