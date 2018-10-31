@@ -41,7 +41,7 @@ rm -rf /usr/local/var/postgres
 ```sh
 brew install radubogdan/postgres/postgresql
 brew switch postgresql 9.6.5
-brew install postgis
+brew install radubogdan/postgres/postgis
 ```
 
 Start postgres
