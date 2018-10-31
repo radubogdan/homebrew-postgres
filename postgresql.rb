@@ -1,4 +1,4 @@
-class Postgres965 < Formula
+class Postgresql < Formula
   desc "Object-relational database system"
   homepage "https://www.postgresql.org/"
   url "https://ftp.postgresql.org/pub/source/v9.6.5/postgresql-9.6.5.tar.bz2"
@@ -51,6 +51,34 @@ class Postgres965 < Formula
     unless File.exist? "#{var}/postgres/PG_VERSION"
       system "#{bin}/initdb", "#{var}/postgres"
     end
+  end
+
+  plist_options :manual => "pg_ctl -D #{HOMEBREW_PREFIX}/var/postgres start"
+
+  def plist; <<-EOS
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+      <key>KeepAlive</key>
+      <true/>
+      <key>Label</key>
+      <string>#{plist_name}</string>
+      <key>ProgramArguments</key>
+      <array>
+        <string>#{opt_bin}/postgres</string>
+        <string>-D</string>
+        <string>#{var}/postgres</string>
+      </array>
+      <key>RunAtLoad</key>
+      <true/>
+      <key>WorkingDirectory</key>
+      <string>#{HOMEBREW_PREFIX}</string>
+      <key>StandardErrorPath</key>
+      <string>#{var}/log/postgres.log</string>
+    </dict>
+    </plist>
+    EOS
   end
 
   test do
