@@ -1,4 +1,4 @@
-# homebrew-postgres965
+# homebrew-postgres
 
 Potgres 9.6.5 formula via homebrew tap
 
